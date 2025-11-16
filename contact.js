@@ -1,6 +1,6 @@
 // Initialize EmailJS
 (function(){
-    emailjs.init("service_077ffgp"); // Replace with your EmailJS public key
+    emailjs.init("uCXEZpn-pm_elbP3O"); // Replace with your EmailJS public key
 })();
 
 // Select the contact form
@@ -18,7 +18,7 @@ contactForm.addEventListener('submit', function(event) {
     };
 
     // Send the email
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    emailjs.send('service_077ffgp', 'template_q6ffpje', templateParams)
         .then(function(response) {
             alert('Message sent successfully!');
             contactForm.reset(); // Clear the form
