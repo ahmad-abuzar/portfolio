@@ -871,7 +871,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Your Name" required>
@@ -891,8 +891,8 @@
                         <button type="submit" class="btn">Send Message</button>
                     </form>
                 </div>
-            </div>
-        </div>
+
+
     </section>
 
     <!-- Footer -->
@@ -960,10 +960,14 @@
             observer.observe(item);
         });
     </script>
-    <!-- EmailJS SDK -->
+   
+   
+    <!-- 1️⃣ Load the EmailJS SDK from the official CDN -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <!-- Your contact form script -->
+
+    <!-- 2️⃣ Then load your contact.js -->
     <script src="contact.js"></script>
+
 
 </body>
 

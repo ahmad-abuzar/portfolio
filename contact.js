@@ -1,29 +1,32 @@
-// Initialize EmailJS
-(function(){
-    emailjs.init("uCXEZpn-pm_elbP3O"); // Replace with your EmailJS public key
-})();
+document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.getElementById("contact-form");
 
-// Select the contact form
-const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
 
-contactForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    // Prepare the form data
-    const templateParams = {
-        from_name: document.getElementById('name').value,
-        from_email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
+        const templateParams = {
+            from_name: document.getElementById("name").value,
+            from_email: document.getElementById("email").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value,
+        };
 
-    // Send the email
-    emailjs.send('service_077ffgp', 'template_q6ffpje', templateParams)
-        .then(function(response) {
-            alert('Message sent successfully!');
-            contactForm.reset(); // Clear the form
-        }, function(error) {
-            alert('Failed to send message. Please try again later.');
-            console.error('EmailJS error:', error);
+        // Use the new EmailJS method: emailjs.sendForm
+        emailjs.sendForm(
+            "service_077ffgp",        // Your Service ID
+            "template_q6ffpje",       // Your Template ID
+            contactForm,              // Pass the form element itself
+            "uCXEZpn-pm_elbP3O"      // Your Public Key
+        )
+        .then(() => {
+            alert("Message sent successfully!");
+            contactForm.reset();
+        })
+        .catch((err) => {
+            console.error("EmailJS error:", err);
+            alert("Failed to send message. Check console for details.");
         });
+    });
 });
